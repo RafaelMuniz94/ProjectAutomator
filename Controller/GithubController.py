@@ -1,22 +1,24 @@
-import sys
-import os
+
 from github import Github
 
 userName = ""
 password = ""
 
-#class GithubController:
+class GithubController:
 
-def get_User_Login():
-    user = Github(userName,password).get_user()
-    return user
+    def get_User_Login(self):
+        user = Github(userName,password).get_user()
+        return user
 
-def createRepo(projectName,description):
-    user = get_User_Login()
-    repo = user.create_repo(projectName,description)
-    return repo.clone_url
+    def createRepo(self):
+        user = self.get_User_Login()
+        repo = user.create_repo(self.name,self.description)
+        return repo.clone_url
 
-'''def __init__(name,description):
-    return createRepo(name,description)'''
 
-print(createRepo(sys.argv[1],sys.argv[2]))
+
+    def  __init__(self,name,description):
+        self.name = name
+        self.description = description
+        
+
